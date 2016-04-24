@@ -56,8 +56,9 @@
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
 	var routes = __webpack_require__(160);
+	var Gif = __webpack_require__(220);
 
-	ReactDOM.render(routes, document.getElementById('app'));
+	ReactDOM.render(React.createElement(Gif, null), document.getElementById('app'));
 
 /***/ },
 /* 2 */
@@ -25116,12 +25117,12 @@
 	var React = __webpack_require__(2);
 
 
-	var Gif = React.createClass({
-	  displayName: 'Gif',
+	var GifContainer = React.createClass({
+	  displayName: 'GifContainer',
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      currentGifUrl: 'http://i.imgur.com/YlxOOI7.gif',
+	      currentGifUrl: 'http://i.imgur.com/CcCBZoH.gif',
 	      gifs: []
 	    };
 	  },
@@ -25145,8 +25146,16 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement('img', { style: imgStyle, src: this.state.currentGifUrl })
+	      React.createElement(Gif, { currentGifUrl: this.state.currentGifUrl })
 	    );
+	  }
+	});
+
+	var Gif = React.createClass({
+	  displayName: 'Gif',
+
+	  render: function render() {
+	    return React.createElement('img', { style: imgStyle, src: this.props.currentGifUrl });
 	  }
 	});
 
@@ -25163,7 +25172,7 @@
 	  margin: "auto"
 	};
 
-	module.exports = Gif;
+	module.exports = GifContainer;
 
 /***/ },
 /* 221 */
