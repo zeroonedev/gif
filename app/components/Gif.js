@@ -1,10 +1,10 @@
 var React = require('react');
 import extractGifs from '../extract-gifs';
 
-var Gif = React.createClass({
+var GifContainer = React.createClass({
   getInitialState: function () {
     return {
-      currentGifUrl: 'http://i.imgur.com/YlxOOI7.gif',
+      currentGifUrl: 'http://i.imgur.com/CcCBZoH.gif',
       gifs: []
     }
   },
@@ -27,8 +27,16 @@ var Gif = React.createClass({
   render: function () {
     return (
       <div>
-        <img style={imgStyle} src={this.state.currentGifUrl}/>
+        <Gif currentGifUrl={this.state.currentGifUrl} />
       </div>
+    )
+  }
+});
+
+var Gif = React.createClass({
+  render: function () {
+    return (
+      <img style={imgStyle} src={this.props.currentGifUrl}/>
     )
   }
 });
@@ -46,4 +54,4 @@ var imgStyle = {
   margin: "auto"
 };
 
-module.exports = Gif;
+module.exports = GifContainer;
