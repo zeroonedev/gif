@@ -25143,6 +25143,7 @@
 	    setInterval(function () {
 	      _this.setState({ currentGifUrl: _this.state.gifs[index] });
 	      index = (index + 1) % _this.state.gifs.length;
+	      console.log(_this.state.currentGifUrl);
 	    }, 10000);
 
 	    setInterval(function () {
