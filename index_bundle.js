@@ -25120,6 +25120,14 @@
 	var GifContainer = React.createClass({
 	  displayName: 'GifContainer',
 
+	  fetchGif: function fetchGif() {
+	    var self = this;
+	    fetch('http://www.reddit.com/r/perfectloops/top.json?sort=top&t=week').then(function (response) {
+	      return response.json();
+	    }).then(function (response) {
+	      self.state.gifs = (0, _extractGifs2.default)(response.data.children);
+	    });
+	  },
 	  getInitialState: function getInitialState() {
 	    return {
 	      currentGifUrl: 'http://i.imgur.com/CcCBZoH.gif',
@@ -25129,18 +25137,17 @@
 	  componentDidMount: function componentDidMount() {
 	    var _this = this;
 
-	    var self = this;
 	    var index = 0;
-	    fetch('http://www.reddit.com/r/perfectloops/top.json?sort=top&t=week').then(function (response) {
-	      return response.json();
-	    }).then(function (response) {
-	      self.state.gifs = (0, _extractGifs2.default)(response.data.children);
-	    });
+	    this.fetchGif();
 
 	    setInterval(function () {
 	      _this.setState({ currentGifUrl: _this.state.gifs[index] });
 	      index = (index + 1) % _this.state.gifs.length;
 	    }, 10000);
+
+	    setInterval(function () {
+	      _this.fetchGif();
+	    }, 28800000);
 	  },
 	  render: function render() {
 	    return React.createElement(
