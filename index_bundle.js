@@ -24891,7 +24891,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(GifImg, { currentGifUrl: this.state.currentGifUrl })
+	      React.createElement(GifImg, null)
 	    );
 	  }
 	});
@@ -24900,7 +24900,7 @@
 	  displayName: 'GifImg',
 
 	  render: function render() {
-	    return React.createElement('img', { style: imgStyle, src: this.props.currentGifUrl });
+	    return React.createElement('img', { style: imgStyle, src: 'http://i.imgur.com/CcCBZoH.gif' });
 	  }
 	});
 
